@@ -1,0 +1,30 @@
+apiVersion: apps/v1                                           
+kind: Deployment                                              
+metadata:
+  name: ksj-web                                              
+  labels:
+    app: ksj-web                                              
+spec:
+  replicas: 2                                              
+                                                            
+  selector:                                              
+    matchLabels:
+      app: ksj-web
+  template:                                            
+    metadata:
+      labels:
+        app: ksj-web                                               
+    spec:
+      containers:
+      - name: ksj-apache                                            
+        image: 049474991519.dkr.ecr.ap-northeast-2.amazonaws.com/ksj-ecr-repo:apache2                                               
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          hostPort : 80
+      - name: ksj-tomcat
+        image: 049474991519.dkr.ecr.ap-northeast-2.amazonaws.com/ksj-ecr-repo:tomcat9
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8009
+          
