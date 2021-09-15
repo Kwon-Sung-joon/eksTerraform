@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+        name: dev-role
+        namespace: kube-system
+rules:
+        - apiGroups:
+            - ""
+            - deployments
+            - extensions
+          resources:
+            - configmaps
+            - deployments
+            - services
+          verbs:
+            - create
+            - describe
+            - get
