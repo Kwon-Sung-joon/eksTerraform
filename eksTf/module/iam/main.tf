@@ -1,3 +1,4 @@
+#EKS Cluster role
 resource "aws_iam_role" "eks-cluster-role" {
   name = "${var.alltag}-eks-cluster-role"
 
@@ -23,6 +24,7 @@ POLICY
   }
 }
 
+#EKS Cluster role policy attachment
 resource "aws_iam_role_policy_attachment" "eks-role-AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.eks-cluster-role.name
@@ -34,6 +36,8 @@ resource "aws_iam_role_policy_attachment" "eks-role-AmazonEKSVPCResourceControll
 }
 
 
+
+#EKS node group iam role
 resource "aws_iam_role" "eks-node-group-iam-role" {
   name = "${var.alltag}-eks-node-group-role"
 
@@ -53,6 +57,8 @@ resource "aws_iam_role" "eks-node-group-iam-role" {
 
 }
 
+
+#EKS node group iam role policy attachment
 resource "aws_iam_role_policy_attachment" "eks-AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
   role       = aws_iam_role.eks-node-group-iam-role.name
@@ -69,7 +75,7 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEC2ContainerRegistryReadOnl
 }
 
 
-
+#EKS node group iam role policy for container insight
 resource "aws_iam_role_policy_attachment" "eks-AmazonCloudWatchAgentServerPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
   role       = aws_iam_role.eks-node-group-iam-role.name

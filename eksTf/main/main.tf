@@ -132,5 +132,22 @@ module "eks_node_groups" {
 
 module "ecr_repos" {
   source         = "../module/ecr"
-  ecr-repos-name = var.ecr-repose-name
+  ecr-repos-name = var.ecr-repos-name
 }
+
+module "codecommit_repos" {
+  source = "../module/codecommit_repo"
+  alltag = var.alltag
+}
+
+module "codebuild" {
+  depends_on = [module.ecr_repos, module.eks_cluster]
+  source     = "../module/codebuild"
+  alltag     = var.alltag
+  ecrName    = var.ecr-repos-name
+  ecrUrl     = module.ecr_repos.repository_url
+  cluster    = module.eks_cluster.cluster_name
+}
+
+
+

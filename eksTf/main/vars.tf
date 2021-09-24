@@ -75,7 +75,7 @@ variable "private_subnet3_az" {
 }
 
 
-variable "ecr-repose-name" {
+variable "ecr-repos-name" {
   description = "ECR Repository Name"
   default     = "ksj-ecr-repo"
 
