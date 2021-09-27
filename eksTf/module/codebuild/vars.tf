@@ -7,7 +7,7 @@ variable "region" {
 
 variable "accountId" {
   type    = string
-  default = "049474991519"
+
 }
 
 variable "projectBuild" {
