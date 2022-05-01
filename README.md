@@ -2,8 +2,9 @@
 k8s eks with Terraform
 
 # Pre Conditions
-## 1. AWS CLI
-## 2. kubectl
+## 1. Terrafrom
+## 2. AWS CLI
+## 3. kubectl
 
 
 
