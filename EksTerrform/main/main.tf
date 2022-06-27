@@ -83,8 +83,8 @@ module "eks_node_groups" {
   source = "../module/eks_node_groups"
   alltag = var.alltag
   cluster_name = module.eks_cluster.cluster_name
-  subnet_id1 = module.public_subnet1.subnet_id 
-  subnet_id2 = module.public_subnet2.subnet_id
+  subnet_id1 = module.private_subnet1.subnet_id 
+  subnet_id2 = module.private_subnet2.subnet_id
 }
 
 
