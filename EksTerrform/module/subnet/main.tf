@@ -5,7 +5,7 @@ resource "aws_subnet" "subnet" {
   map_public_ip_on_launch = var.is_public
 
   tags = {
-    Name = "${var.alltag}-subnet-${var.public_or_private[var.is_public]}"
+    Name = "${var.alltag}-${var.public_or_private[var.is_public]}-subnet"
  Owner = "ksj"
   }
 }
